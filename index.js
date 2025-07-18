@@ -1,18 +1,36 @@
 const gridContainer = document.querySelector(".grid-container");
+const button = document.querySelector("button");
 
-for (let i = 0; i < 256; i++) {
-  const div = document.createElement("div");
-  div.classList.add("grid-square");
+const createGridSize = (size) => {
+  const squareSize = 960 / size;
+  for (let i = 0; i < size * size; i++) {
+    const div = document.createElement("div");
+    div.classList.add("grid-square");
+    div.style.width = `${squareSize}px`;
+    div.style.height = `${squareSize}px`;
 
-  gridContainer.append(div);
-}
-const gridSquare = [...document.querySelectorAll(".grid-square")];
-gridSquare.forEach((grid) => {
-  grid.addEventListener("mouseenter", () => {
-    grid.style.backgroundColor = "#4CAF50";
-  });
+    div.addEventListener("mouseenter", () => {
+      div.style.backgroundColor = "#4CAF50";
+    });
 
-  grid.addEventListener("mouseleave", () => {
-    grid.style.backgroundColor = "rgb(179, 194, 194)";
-  });
+    div.addEventListener("mouseleave", () => {
+      div.style.backgroundColor = "rgb(179, 194, 194)";
+    });
+
+    gridContainer.append(div);
+  }
+};
+
+const clearGrid = () => {
+  gridContainer.textContent = "";
+};
+
+button.addEventListener("click", () => {
+  const size = prompt("Enter a number of square max of 100");
+  if (size > 100) {
+    alert("Max of 100");
+    return;
+  }
+  clearGrid();
+  createGridSize(size);
 });
