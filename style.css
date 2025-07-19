@@ -45,7 +45,8 @@ button {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-  width: 960px;
+  width: 470px;
+  margin: 10px;
   height: auto;
   margin-bottom: 20px;
 }

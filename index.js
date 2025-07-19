@@ -2,6 +2,7 @@ import snackbar from "snackbar";
 
 const gridContainer = document.querySelector(".grid-container");
 const button = document.querySelector("button");
+
 const createGridSize = (size) => {
   const squareSize = 960 / size;
   for (let i = 0; i < size * size; i++) {
@@ -25,10 +26,6 @@ const createGridSize = (size) => {
       }
     });
 
-    // div.addEventListener("mouseleave", () => {
-    //   div.style.backgroundColor = "rgb(179, 194, 194)";
-    // });
-
     gridContainer.append(div);
   }
 };
@@ -45,4 +42,14 @@ button.addEventListener("click", () => {
   }
   clearGrid();
   createGridSize(size);
+});
+
+const clearButton = document.querySelector(".clear-button");
+clearButton.addEventListener("click", () => {
+  const gridSquare = [...document.querySelectorAll(".grid-square")];
+  gridSquare.forEach((grid) => {
+    grid.addEventListener("mouseleave", () => {
+      grid.style.backgroundColor = "rgb(179, 194, 194)";
+    });
+  });
 });
