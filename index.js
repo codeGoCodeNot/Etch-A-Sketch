@@ -1,6 +1,7 @@
+import snackbar from "snackbar";
+
 const gridContainer = document.querySelector(".grid-container");
 const button = document.querySelector("button");
-const randomColor = ``;
 const createGridSize = (size) => {
   const squareSize = 960 / size;
   for (let i = 0; i < size * size; i++) {
@@ -24,9 +25,9 @@ const createGridSize = (size) => {
       }
     });
 
-    div.addEventListener("mouseleave", () => {
-      div.style.backgroundColor = "rgb(179, 194, 194)";
-    });
+    // div.addEventListener("mouseleave", () => {
+    //   div.style.backgroundColor = "rgb(179, 194, 194)";
+    // });
 
     gridContainer.append(div);
   }
@@ -39,7 +40,7 @@ const clearGrid = () => {
 button.addEventListener("click", () => {
   const size = prompt("Enter a number of square max of 100");
   if (size > 100) {
-    alert("Max of 100");
+    snackbar.show("Max of 100 Stupid!");
     return;
   }
   clearGrid();
